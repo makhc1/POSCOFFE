@@ -1,0 +1,40 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+    background-color: #0D0D11;
+    color: #F3F4F6;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+    background-color: #FF2E63;
+    color: #FFFFFF;
+}
+
+.glass-panel {
+    background: rgba(26, 26, 32, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+    background: rgba(22, 22, 28, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #FF2E63 0%, #FF9900 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-gradient-yellow {
+    background: linear-gradient(135deg, #FFDE59 0%, #FF9900 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
