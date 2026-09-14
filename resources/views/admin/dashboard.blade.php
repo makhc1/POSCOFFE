@@ -1,141 +1,161 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Dashboard - Kopi Gacoan')
+@section('title', 'Admin Dashboard - Bagelan Coffee')
 
 @section('content')
-<div class="space-y-8">
+<div class="space-y-16 max-w-7xl mx-auto opacity-0 translate-y-16" style="animation: fadeUp 1s cubic-bezier(0.32, 0.72, 0, 1) forwards;">
     
     <!-- Top Greeting -->
-    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+    <div class="flex flex-col sm:flex-row justify-between sm:items-end gap-8 mb-8">
         <div>
-            <h1 class="font-display font-black text-2xl sm:text-3xl text-white">Ringkasan Penjualan & Operasional 📊</h1>
-            <p class="text-xs text-gray-400 mt-1">Pantau pesanan barista live, omset penjualan, dan inventori menu.</p>
+            <div class="inline-flex items-center gap-3 mb-4">
+                <span class="w-8 h-[1px] bg-[#2D2420]/30"></span>
+                <span class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#2D2420]/60">Ikhtisar Operasional</span>
+            </div>
+            <h1 class="font-editorial text-4xl sm:text-5xl text-[#2D2420] leading-tight">Performa <br>Mahakarya.</h1>
         </div>
-        <a href="{{ route('admin.products.create') }}" class="inline-flex items-center gap-2 bg-[#FF2E63] hover:bg-[#e01e53] text-white text-xs font-black px-5 py-3 rounded-xl shadow-lg shadow-[#FF2E63]/30 transition-all">
-            <i class="ph ph-plus"></i>
-            <span>Tambah Menu Baru</span>
+        <a href="{{ route('admin.products.create') }}" class="group relative rounded-full pl-6 pr-2 py-2 bg-[#2D2420] hover:bg-[#4E342E] text-[#FDFBF7] text-[11px] font-semibold uppercase tracking-widest inline-flex items-center gap-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_10px_30px_rgba(45,36,32,0.2)] active:scale-[0.98]">
+            <span>Tambah Menu</span>
+            <div class="w-8 h-8 rounded-full bg-[#FDFBF7]/10 flex items-center justify-center group-hover:scale-105 awwwards-transition">
+                <i class="ph ph-plus text-sm"></i>
+            </div>
         </a>
     </div>
 
-    <!-- 4 Metric Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- The Asymmetrical Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
         
-        <div class="bg-[#121216] border border-white/10 rounded-3xl p-6 shadow-xl space-y-2">
-            <div class="flex justify-between items-center text-gray-400 text-xs font-bold uppercase">
-                <span>Total Omset Penjualan</span>
-                <i class="ph ph-rupiah-sign text-emerald-400 text-base"></i>
+        <!-- Large Hero Metric (Omset) -->
+        <div class="col-span-1 md:col-span-8 bg-[#FAF7F2] border border-[#2D2420]/10 rounded-[2rem] p-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+            <div class="bg-[#FDFBF7] rounded-[calc(2rem-0.25rem)] border border-[#2D2420]/5 p-8 sm:p-12 h-full flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute -right-12 -top-12 w-64 h-64 bg-gradient-to-bl from-[#8D6E63]/10 to-transparent rounded-full blur-3xl group-hover:scale-110 awwwards-transition duration-[2000ms]"></div>
+                
+                <div class="flex justify-between items-start relative z-10 mb-12">
+                    <div>
+                        <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2D2420]/50 block mb-2">Total Pendapatan</span>
+                        <div class="w-12 h-1 bg-[#2D2420]"></div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full border border-[#2D2420]/10 flex items-center justify-center text-[#2D2420]">
+                        <i class="ph ph-wallet text-lg"></i>
+                    </div>
+                </div>
+                <div class="relative z-10">
+                    <span class="font-editorial text-5xl sm:text-6xl text-[#2D2420] block leading-none">
+                        Rp {{ number_format($totalRevenue, 0, ',', '.') }}
+                    </span>
+                    <span class="text-sm text-[#2D2420]/50 mt-4 block font-light">Akumulasi dari seluruh transaksi berhasil bulan ini.</span>
+                </div>
             </div>
-            <span class="font-display font-black text-2xl text-emerald-400 block">
-                Rp {{ number_format($totalRevenue, 0, ',', '.') }}
-            </span>
-            <span class="text-[10px] text-gray-500">Dari seluruh transaksi sukses</span>
         </div>
 
-        <div class="bg-[#121216] border border-white/10 rounded-3xl p-6 shadow-xl space-y-2">
-            <div class="flex justify-between items-center text-gray-400 text-xs font-bold uppercase">
-                <span>Total Pesanan Masuk</span>
-                <i class="ph ph-receipt text-[#FF2E63] text-base"></i>
+        <!-- Stacked Metrics -->
+        <div class="col-span-1 md:col-span-4 flex flex-col gap-6">
+            <!-- Pesanan Masuk -->
+            <div class="flex-1 bg-[#FAF7F2] border border-[#2D2420]/10 rounded-[2rem] p-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+                <div class="bg-[#FDFBF7] rounded-[calc(2rem-0.25rem)] border border-[#2D2420]/5 p-6 sm:p-8 h-full flex flex-col justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[#2D2420]/[0.02] translate-y-full group-hover:translate-y-0 awwwards-transition"></div>
+                    <div class="flex items-center gap-4 relative z-10 mb-4">
+                        <div class="w-8 h-8 rounded-full border border-[#2D2420]/10 flex items-center justify-center text-[#2D2420]">
+                            <i class="ph ph-receipt text-sm"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2D2420]/50">Pesanan</span>
+                    </div>
+                    <span class="font-editorial text-4xl text-[#2D2420] block relative z-10">{{ number_format($totalOrders) }}</span>
+                </div>
             </div>
-            <span class="font-display font-black text-2xl text-white block">
-                {{ number_format($totalOrders) }} Order
-            </span>
-            <span class="text-[10px] text-gray-500">Dine-in, Takeaway & Delivery</span>
-        </div>
 
-        <div class="bg-[#121216] border border-white/10 rounded-3xl p-6 shadow-xl space-y-2">
-            <div class="flex justify-between items-center text-gray-400 text-xs font-bold uppercase">
-                <span>Total Menu Aktif</span>
-                <i class="ph ph-mug-hot text-[#FF9900] text-base"></i>
+            <!-- Cabang Outlet -->
+            <div class="flex-1 bg-[#FAF7F2] border border-[#2D2420]/10 rounded-[2rem] p-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+                <div class="bg-[#FDFBF7] rounded-[calc(2rem-0.25rem)] border border-[#2D2420]/5 p-6 sm:p-8 h-full flex flex-col justify-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[#2D2420]/[0.02] translate-y-full group-hover:translate-y-0 awwwards-transition"></div>
+                    <div class="flex items-center gap-4 relative z-10 mb-4">
+                        <div class="w-8 h-8 rounded-full border border-[#2D2420]/10 flex items-center justify-center text-[#2D2420]">
+                            <i class="ph ph-storefront text-sm"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2D2420]/50">Cabang</span>
+                    </div>
+                    <span class="font-editorial text-4xl text-[#2D2420] block relative z-10">{{ number_format($totalOutlets) }}</span>
+                </div>
             </div>
-            <span class="font-display font-black text-2xl text-white block">
-                {{ number_format($totalProducts) }} Menu
-            </span>
-            <span class="text-[10px] text-gray-500">Kopi, Dimsum, & Es Setan</span>
         </div>
-
-        <div class="bg-[#121216] border border-white/10 rounded-3xl p-6 shadow-xl space-y-2">
-            <div class="flex justify-between items-center text-gray-400 text-xs font-bold uppercase">
-                <span>Cabang Outlet Aktif</span>
-                <i class="ph ph-store text-cyan-400 text-base"></i>
-            </div>
-            <span class="font-display font-black text-2xl text-white block">
-                {{ number_format($totalOutlets) }} Lokasi
-            </span>
-            <span class="text-[10px] text-gray-500">Jakarta, Bandung, Jogja, Bali, dll</span>
-        </div>
-
     </div>
 
-    <!-- Analytics Chart: Ethereal Glass Double-Bezel -->
-    <div class="bg-white/5 ring-1 ring-white/10 p-2 rounded-[2rem] shadow-2xl relative overflow-hidden group">
-        <!-- Radial Gradient Backdrop inside shell -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#FF2E63]/10 via-transparent to-[#FF9900]/10 opacity-50 transition-opacity duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:opacity-100 pointer-events-none"></div>
-        
-        <div class="bg-[#050505] shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] rounded-[calc(2rem-0.5rem)] p-6 sm:p-8 relative z-10">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+    <!-- Analytics Chart: Editorial Double-Bezel -->
+    <div class="bg-[#FAF7F2] border border-[#2D2420]/10 rounded-[2.5rem] p-1.5 shadow-[0_20px_40px_rgba(45,36,32,0.05)] relative overflow-hidden group">
+        <div class="bg-[#FDFBF7] shadow-[inset_0_1px_2px_rgba(255,255,255,1)] rounded-[calc(2.5rem-0.375rem)] border border-[#2D2420]/5 p-8 sm:p-12 relative z-10">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
                 <div>
-                    <div class="inline-flex items-center gap-2 mb-2">
-                        <span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-white/10 text-white/70">Analytics</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    </div>
-                    <h3 class="font-display font-black text-xl text-white">Trend Penjualan Harian</h3>
+                    <h3 class="font-editorial text-3xl text-[#2D2420]">Grafik Transaksi.</h3>
+                    <p class="text-xs text-[#2D2420]/50 mt-2 font-light">Pergerakan volume penjualan harian selama minggu ini.</p>
                 </div>
                 <!-- Button in Button pattern -->
-                <button class="group/btn relative rounded-full px-6 py-2.5 bg-white/5 hover:bg-white/10 text-xs font-bold text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] border border-white/10 flex items-center gap-4">
-                    <span>Unduh Laporan</span>
-                    <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                        <i class="ph ph-download-simple text-[10px]"></i>
+                <button class="group/btn relative rounded-full pl-5 pr-1.5 py-1.5 bg-[#FDFBF7] hover:bg-[#FAF7F2] text-[10px] font-bold text-[#2D2420] uppercase tracking-widest transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] border border-[#2D2420]/10 flex items-center gap-4 shadow-sm">
+                    <span>Laporan Lanjut</span>
+                    <div class="w-8 h-8 rounded-full bg-[#2D2420]/5 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-105">
+                        <i class="ph ph-arrow-down-right text-[12px]"></i>
                     </div>
                 </button>
             </div>
             
-            <div class="h-[300px] w-full relative">
+            <div class="h-[350px] w-full relative">
                 <canvas id="revenueChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Recent Partnership / Career Inquiries -->
-    <div class="bg-[#121216] border border-white/10 rounded-3xl p-6 shadow-xl space-y-4">
-        <h3 class="font-display font-bold text-lg text-white">Pengajuan Kemitraan Franchise & Lamaran Barista Terbaru</h3>
-        
-        <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-gray-300">
-                <thead class="bg-white/5 uppercase text-[10px] font-bold text-gray-400 tracking-wider">
-                    <tr>
-                        <th class="p-3.5 rounded-l-xl">Tipe</th>
-                        <th class="p-3.5">Nama</th>
-                        <th class="p-3.5">Kontak WhatsApp / Email</th>
-                        <th class="p-3.5">Kota</th>
-                        <th class="p-3.5">Posisi / Lokasi</th>
-                        <th class="p-3.5 rounded-r-xl">Waktu Masuk</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-white/5">
-                    @forelse($recentInquiries as $inq)
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-3.5">
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase {{ $inq->type === 'franchise' ? 'bg-[#FF9900]/20 text-[#FF9900]' : 'bg-[#FF2E63]/20 text-[#FF2E63]' }}">
-                                    {{ $inq->type }}
-                                </span>
-                            </td>
-                            <td class="p-3.5 font-bold text-white">{{ $inq->full_name }}</td>
-                            <td class="p-3.5">{{ $inq->phone }} • {{ $inq->email }}</td>
-                            <td class="p-3.5">{{ $inq->city }}</td>
-                            <td class="p-3.5">{{ $inq->location_plan_or_position }}</td>
-                            <td class="p-3.5 text-gray-500">{{ $inq->created_at->diffForHumans() }}</td>
-                        </tr>
-                    @empty
+    <!-- Recent Inquiries -->
+    <div class="bg-[#FAF7F2] border border-[#2D2420]/10 rounded-[2.5rem] p-1.5 shadow-[0_20px_40px_rgba(45,36,32,0.05)] relative overflow-hidden">
+        <div class="bg-[#FDFBF7] shadow-[inset_0_1px_2px_rgba(255,255,255,1)] rounded-[calc(2.5rem-0.375rem)] border border-[#2D2420]/5 p-8 sm:p-12 relative z-10">
+            
+            <div class="mb-10">
+                <h3 class="font-editorial text-3xl text-[#2D2420]">Aktivitas Terkini.</h3>
+                <p class="text-xs text-[#2D2420]/50 mt-2 font-light">Pengajuan kemitraan franchise dan lamaran kerja terbaru yang masuk.</p>
+            </div>
+            
+            <div class="overflow-x-auto hide-scrollbar">
+                <table class="w-full text-left text-sm text-[#2D2420]">
+                    <thead class="uppercase text-[10px] font-semibold text-[#2D2420]/40 tracking-widest border-b border-[#2D2420]/10">
                         <tr>
-                            <td colspan="6" class="p-8 text-center text-gray-500">Belum ada pengajuan masuk.</td>
+                            <th class="pb-6 font-semibold">Tipe</th>
+                            <th class="pb-6 font-semibold">Nama Kandidat / Mitra</th>
+                            <th class="pb-6 font-semibold">Kontak Utama</th>
+                            <th class="pb-6 font-semibold">Wilayah</th>
+                            <th class="pb-6 font-semibold text-right">Waktu</th>
                         </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="divide-y divide-[#2D2420]/5">
+                        @forelse($recentInquiries as $inq)
+                            <tr class="group hover:bg-[#2D2420]/[0.02] awwwards-transition">
+                                <td class="py-6 pr-4">
+                                    <span class="px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-wider {{ $inq->type === 'franchise' ? 'bg-[#8D6E63]/10 text-[#4E342E]' : 'bg-[#2D2420]/10 text-[#2D2420]' }}">
+                                        {{ $inq->type }}
+                                    </span>
+                                </td>
+                                <td class="py-6 pr-4 font-semibold text-[#2D2420]">{{ $inq->full_name }}</td>
+                                <td class="py-6 pr-4 text-[#2D2420]/70 text-xs">{{ $inq->phone }}</td>
+                                <td class="py-6 pr-4 text-[#2D2420]/70 text-xs">{{ $inq->city }}</td>
+                                <td class="py-6 text-right text-[#2D2420]/40 text-xs">{{ $inq->created_at->diffForHumans() }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5" class="py-12 text-center text-[#2D2420]/40 text-sm font-light">Rekam jejak aktivitas belum tersedia.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 </div>
+
+<style>
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(2rem); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 @endsection
 
 @push('scripts')
@@ -144,10 +164,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('revenueChart').getContext('2d');
         
-        // Create an ethereal gradient for the chart area
-        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(255, 46, 99, 0.4)');   // #FF2E63 with opacity
-        gradient.addColorStop(1, 'rgba(255, 153, 0, 0.0)');   // #FF9900 faded out
+        // Creamy gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, 350);
+        gradient.addColorStop(0, 'rgba(45, 36, 32, 0.08)');   // #2D2420
+        gradient.addColorStop(1, 'rgba(45, 36, 32, 0.0)');
 
         new Chart(ctx, {
             type: 'line',
@@ -156,18 +176,18 @@
                 datasets: [{
                     label: 'Omset',
                     data: [1200000, 1900000, 1500000, 2200000, 2800000, 3500000, 3100000],
-                    borderColor: '#FF2E63',
+                    borderColor: '#2D2420',
                     borderWidth: 2,
                     backgroundColor: gradient,
                     fill: true,
-                    tension: 0.4, // Smooth cubic-bezier curve equivalent
-                    pointBackgroundColor: '#050505',
-                    pointBorderColor: '#FF2E63',
+                    tension: 0.4, // Fluid cubic bezier curve equivalent
+                    pointBackgroundColor: '#FDFBF7',
+                    pointBorderColor: '#2D2420',
                     pointBorderWidth: 2,
                     pointRadius: 4,
                     pointHoverRadius: 6,
-                    pointHoverBackgroundColor: '#FF9900',
-                    pointHoverBorderColor: '#fff'
+                    pointHoverBackgroundColor: '#4E342E',
+                    pointHoverBorderColor: '#FDFBF7'
                 }]
             },
             options: {
@@ -178,17 +198,17 @@
                     easing: 'easeOutQuart'
                 },
                 plugins: {
-                    legend: {
-                        display: false
-                    },
+                    legend: { display: false },
                     tooltip: {
-                        backgroundColor: 'rgba(5, 5, 5, 0.8)',
-                        titleColor: '#fff',
-                        bodyColor: '#e5e7eb',
-                        borderColor: 'rgba(255,255,255,0.1)',
+                        backgroundColor: 'rgba(253, 251, 247, 0.95)',
+                        titleColor: '#2D2420',
+                        bodyColor: '#2D2420',
+                        borderColor: 'rgba(45, 36, 32, 0.1)',
                         borderWidth: 1,
-                        padding: 12,
+                        padding: 16,
                         displayColors: false,
+                        titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 10, weight: 'bold' },
+                        bodyFont: { family: "'Playfair Display', serif", size: 14 },
                         callbacks: {
                             label: function(context) {
                                 return 'Rp ' + new Intl.NumberFormat('id-ID').format(context.parsed.y);
@@ -198,32 +218,25 @@
                 },
                 scales: {
                     x: {
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
+                        grid: { display: false, drawBorder: false },
                         ticks: {
-                            color: '#9ca3af',
-                            font: {
-                                family: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-                                size: 10
-                            }
+                            color: 'rgba(45, 36, 32, 0.4)',
+                            font: { family: "'Plus Jakarta Sans', sans-serif", size: 10, weight: '600' }
                         }
                     },
                     y: {
                         grid: {
-                            color: 'rgba(255, 255, 255, 0.05)',
+                            color: 'rgba(45, 36, 32, 0.05)',
                             drawBorder: false,
-                            borderDash: [5, 5]
+                            borderDash: [4, 4]
                         },
                         ticks: {
-                            color: '#9ca3af',
-                            font: {
-                                size: 10
-                            },
+                            color: 'rgba(45, 36, 32, 0.4)',
+                            font: { family: "'Plus Jakarta Sans', sans-serif", size: 10, weight: '600' },
                             callback: function(value) {
                                 return 'Rp ' + (value / 1000000) + 'M';
-                            }
+                            },
+                            maxTicksLimit: 5
                         },
                         beginAtZero: true
                     }

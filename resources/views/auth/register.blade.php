@@ -1,70 +1,87 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar - Kopi Gacoan')
+@section('title', 'Daftar - Bagelan Coffee')
 
 @section('content')
-<div class="min-h-[70vh] flex items-center justify-center relative overflow-hidden px-4 pt-16">
-    <div class="w-full max-w-md relative z-10 p-1.5 bg-white/5 rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] awwwards-transition reveal-on-scroll translate-y-16 opacity-0 blur-md">
-        <!-- Inner Core -->
-        <div class="relative bg-[#0A0A0A] rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] p-8 overflow-hidden">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FF2E63]/[0.05] via-[#050505]/0 to-transparent pointer-events-none"></div>
+<div class="max-w-6xl mx-auto px-4 w-full flex items-center justify-center -mt-8">
+    <div class="w-full bg-[#FAF7F2] rounded-none md:rounded-[1rem] shadow-[0_20px_50px_rgba(45,36,32,0.08)] border border-[#2D2420]/5 overflow-hidden flex flex-col md:flex-row-reverse min-h-[650px] reveal-on-scroll translate-y-16 opacity-0 awwwards-transition">
+        
+        <!-- Right Image Section (reversed) -->
+        <div class="hidden md:flex md:w-1/2 relative bg-[#2D2420] overflow-hidden group">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80" alt="Coffee Setup" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 awwwards-transition duration-[2000ms]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#2D2420] via-[#2D2420]/50 to-transparent"></div>
             
-            <div class="relative z-10 flex flex-col items-center text-center mb-8">
-                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                    <i class="ph ph-user-plus text-xl text-[#FF2E63]"></i>
+            <div class="relative z-10 flex flex-col justify-end p-12 h-full text-[#FDFBF7]">
+                <div class="w-12 h-12 rounded-full border border-[#FDFBF7]/30 flex items-center justify-center mb-8 backdrop-blur-sm">
+                    <i class="ph ph-seal-check text-xl"></i>
                 </div>
-                <h1 class="font-display font-medium text-3xl text-white mb-2">Registrasi Baru</h1>
-                <p class="text-xs text-white/50">Buat identitas untuk bergabung.</p>
+                <h2 class="font-editorial text-4xl leading-tight mb-4 text-[#FDFBF7]">Bergabung <br>Bersama Kami.</h2>
+                <p class="text-sm text-[#FDFBF7]/70 max-w-sm font-light leading-relaxed">
+                    Dapatkan penawaran eksklusif, akses prioritas, dan cerita di balik setiap racikan kopi Nusantara kami.
+                </p>
+            </div>
+        </div>
+
+        <!-- Left Form Section -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center px-8 py-12 md:px-16 lg:px-20 relative bg-[#FDFBF7]">
+            <div class="absolute top-0 left-0 p-8">
+                <a href="{{ route('home') }}" class="w-10 h-10 rounded-full border border-[#2D2420]/10 flex items-center justify-center text-[#2D2420]/50 hover:bg-[#2D2420] hover:text-[#FDFBF7] awwwards-transition group">
+                    <i class="ph ph-arrow-left group-hover:-translate-x-1 awwwards-transition"></i>
+                </a>
             </div>
 
-            <form action="{{ route('register.post') }}" method="POST" class="relative z-10 space-y-5">
+            <div class="mb-10 mt-6">
+                <h1 class="font-editorial text-3xl text-[#2D2420] mb-2">Registrasi Baru.</h1>
+                <p class="text-sm text-[#2D2420]/60">Lengkapi identitas Anda di bawah ini.</p>
+            </div>
+
+            <form action="{{ route('register.post') }}" method="POST" class="space-y-6">
                 @csrf
-                <div>
-                    <label class="block text-[10px] font-semibold text-white/60 uppercase tracking-widest mb-2">Nama Lengkap</label>
-                    <div class="relative">
-                        <i class="ph ph-user absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg"></i>
-                        <input type="text" name="name" required placeholder="John Doe" value="{{ old('name') }}" class="w-full bg-[#050505] border border-white/10 focus:border-white/30 focus:ring-0 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-white/20 awwwards-transition outline-none">
+                <div class="space-y-1">
+                    <label class="text-[11px] font-semibold text-[#2D2420]/60 uppercase tracking-widest">Nama Lengkap</label>
+                    <div class="relative group">
+                        <input type="text" name="name" required placeholder="John Doe" value="{{ old('name') }}" class="w-full bg-transparent border-b border-[#2D2420]/20 focus:border-[#2D2420] px-0 py-3 text-sm text-[#2D2420] placeholder:text-[#2D2420]/30 transition-colors outline-none ring-0">
+                        <i class="ph ph-user absolute right-0 top-1/2 -translate-y-1/2 text-[#2D2420]/30 text-lg group-focus-within:text-[#2D2420] transition-colors"></i>
                     </div>
-                    @error('name') <p class="text-[10px] text-red-400 mt-2">{{ $message }}</p> @enderror
+                    @error('name') <p class="text-[10px] text-red-500 mt-1">{{ $message }}</p> @enderror
                 </div>
 
-                <div>
-                    <label class="block text-[10px] font-semibold text-white/60 uppercase tracking-widest mb-2">Email</label>
-                    <div class="relative">
-                        <i class="ph ph-envelope-simple absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg"></i>
-                        <input type="email" name="email" required placeholder="email@domain.com" value="{{ old('email') }}" class="w-full bg-[#050505] border border-white/10 focus:border-white/30 focus:ring-0 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-white/20 awwwards-transition outline-none">
+                <div class="space-y-1">
+                    <label class="text-[11px] font-semibold text-[#2D2420]/60 uppercase tracking-widest">Email Address</label>
+                    <div class="relative group">
+                        <input type="email" name="email" required placeholder="nama@email.com" value="{{ old('email') }}" class="w-full bg-transparent border-b border-[#2D2420]/20 focus:border-[#2D2420] px-0 py-3 text-sm text-[#2D2420] placeholder:text-[#2D2420]/30 transition-colors outline-none ring-0">
+                        <i class="ph ph-envelope-simple absolute right-0 top-1/2 -translate-y-1/2 text-[#2D2420]/30 text-lg group-focus-within:text-[#2D2420] transition-colors"></i>
                     </div>
-                    @error('email') <p class="text-[10px] text-red-400 mt-2">{{ $message }}</p> @enderror
+                    @error('email') <p class="text-[10px] text-red-500 mt-1">{{ $message }}</p> @enderror
                 </div>
 
-                <div>
-                    <label class="block text-[10px] font-semibold text-white/60 uppercase tracking-widest mb-2">Password</label>
-                    <div class="relative">
-                        <i class="ph ph-key absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg"></i>
-                        <input type="password" name="password" required placeholder="••••••••" class="w-full bg-[#050505] border border-white/10 focus:border-white/30 focus:ring-0 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-white/20 awwwards-transition outline-none">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-semibold text-[#2D2420]/60 uppercase tracking-widest">Password</label>
+                        <div class="relative group">
+                            <input type="password" name="password" required placeholder="••••••••" class="w-full bg-transparent border-b border-[#2D2420]/20 focus:border-[#2D2420] px-0 py-3 text-sm text-[#2D2420] placeholder:text-[#2D2420]/30 transition-colors outline-none ring-0">
+                        </div>
+                        @error('password') <p class="text-[10px] text-red-500 mt-1">{{ $message }}</p> @enderror
                     </div>
-                    @error('password') <p class="text-[10px] text-red-400 mt-2">{{ $message }}</p> @enderror
+
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-semibold text-[#2D2420]/60 uppercase tracking-widest">Ulangi Password</label>
+                        <div class="relative group">
+                            <input type="password" name="password_confirmation" required placeholder="••••••••" class="w-full bg-transparent border-b border-[#2D2420]/20 focus:border-[#2D2420] px-0 py-3 text-sm text-[#2D2420] placeholder:text-[#2D2420]/30 transition-colors outline-none ring-0">
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-[10px] font-semibold text-white/60 uppercase tracking-widest mb-2">Konfirmasi Password</label>
-                    <div class="relative">
-                        <i class="ph ph-check-circle absolute left-4 top-1/2 -translate-y-1/2 text-white/30 text-lg"></i>
-                        <input type="password" name="password_confirmation" required placeholder="••••••••" class="w-full bg-[#050505] border border-white/10 focus:border-white/30 focus:ring-0 rounded-xl pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-white/20 awwwards-transition outline-none">
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-end">
-                    <a href="{{ route('login') }}" class="text-xs text-white/50 hover:text-white awwwards-transition">Sudah punya akun? Masuk</a>
-                </div>
-
-                <button type="submit" class="w-full group relative inline-flex items-center justify-center gap-3 bg-[#FF2E63] text-white font-semibold rounded-xl px-6 py-4 text-sm active:scale-[0.98] awwwards-transition overflow-hidden">
-                    <span>Buat Akun Baru</span>
-                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 awwwards-transition">
-                        <i class="ph ph-arrow-right text-xs"></i>
-                    </div>
+                <button type="submit" class="w-full group bg-[#2D2420] text-[#FDFBF7] flex items-center justify-between px-6 py-4 mt-8 hover:bg-[#4E342E] awwwards-transition">
+                    <span class="text-xs font-semibold uppercase tracking-widest">Daftar Akun</span>
+                    <i class="ph ph-arrow-right group-hover:translate-x-2 awwwards-transition"></i>
                 </button>
             </form>
+
+            <p class="text-center mt-10 text-xs text-[#2D2420]/60">
+                Sudah menjadi member? 
+                <a href="{{ route('login') }}" class="text-[#2D2420] font-semibold border-b border-[#2D2420] pb-0.5 hover:text-[#4E342E] hover:border-[#4E342E] awwwards-transition">Masuk di sini</a>
+            </p>
         </div>
     </div>
 </div>
@@ -75,8 +92,8 @@
         setTimeout(() => {
             const el = document.querySelector('.reveal-on-scroll');
             if(el) {
-                el.classList.remove('translate-y-16', 'opacity-0', 'blur-md');
-                el.classList.add('translate-y-0', 'opacity-100', 'blur-0');
+                el.classList.remove('translate-y-16', 'opacity-0');
+                el.classList.add('translate-y-0', 'opacity-100');
             }
         }, 100);
     });

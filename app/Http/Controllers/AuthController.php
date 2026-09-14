@@ -69,9 +69,9 @@ class AuthController extends Controller
     public function quickLogin(string $role): RedirectResponse
     {
         $targetEmail = match ($role) {
-            'admin' => 'admin@kopigacoan.com',
-            'kasir' => 'kasir@kopigacoan.com',
-            default => 'admin@kopigacoan.com',
+            'admin' => 'admin@bagelancoffee.com',
+            'kasir' => 'kasir@bagelancoffee.com',
+            default => 'admin@bagelancoffee.com',
         };
 
         $user = User::where('email', $targetEmail)->first();
@@ -133,6 +133,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Registrasi berhasil. Selamat datang, ' . $user->name . '!');
+        return redirect()->route('home')->with('success', 'Registrasi berhasil. Selamat datang, '.$user->name.'!');
     }
 }
