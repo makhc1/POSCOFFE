@@ -89,7 +89,7 @@ class CartController extends Controller
                 'item_key' => $itemKey,
                 'product_id' => $product->id,
                 'name' => $product->name,
-                'image_url' => $product->image_url,
+                'image_url' => asset($product->image_url),
                 'unit_price' => (float) $product->price,
                 'quantity' => (int) $validated['quantity'],
                 'sugar_level' => $sugar,

@@ -85,7 +85,7 @@
 
                         <!-- Image Mask -->
                         <div class="absolute inset-0 z-0 opacity-[0.15] group-hover:opacity-40 awwwards-transition pointer-events-none mt-32">
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover grayscale-[20%]" style="mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);">
+                            <img src="{{ asset($product->image_url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover grayscale-[20%]" style="mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);">
                         </div>
 
                         <!-- Price & Action -->

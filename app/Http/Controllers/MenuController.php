@@ -100,7 +100,7 @@ class MenuController extends Controller
             'formatted_price' => $product->formatted_price,
             'original_price' => $product->original_price ? (float) $product->original_price : null,
             'formatted_original_price' => $product->formatted_original_price,
-            'image_url' => $product->image_url,
+            'image_url' => asset($product->image_url),
             'badge' => $product->badge,
             'caffeine_level' => $product->caffeine_level,
             'spicy_level' => $product->spicy_level,

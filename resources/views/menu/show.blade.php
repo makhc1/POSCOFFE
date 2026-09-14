@@ -24,7 +24,7 @@
             <!-- Left: Product Image -->
             <div class="lg:col-span-6 relative">
                 <div class="relative h-80 sm:h-96 md:h-[420px] rounded-2xl overflow-hidden bg-black/40 border border-[#2D2420]/10">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                    <img src="{{ asset($product->image_url) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                     @if($product->badge)
                         <span class="absolute top-4 left-4 bg-[#4E342E] text-[#2D2420] text-xs font-black uppercase px-3.5 py-1.5 rounded-full shadow-lg">
                             {{ $product->badge }}
@@ -107,7 +107,7 @@
                         <div class="bg-[#16161C] border border-[#2D2420]/10 rounded-3xl p-4 shadow-xl hover:border-[#FF2E63]/40 transition-all flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-40 w-full rounded-2xl overflow-hidden bg-black/40 mb-3">
-                                    <img src="{{ $rel->image_url }}" alt="{{ $rel->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                                    <img src="{{ asset($rel->image_url) }}" alt="{{ $rel->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                                 </div>
                                 <h4 class="font-bold text-sm text-[#2D2420] group-hover:text-[#4E342E] transition-colors line-clamp-1">{{ $rel->name }}</h4>
                                 <span class="font-extrabold text-[#4E342E] text-sm block mt-1">{{ $rel->formatted_price }}</span>

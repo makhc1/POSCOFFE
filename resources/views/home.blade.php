@@ -80,7 +80,7 @@
                     
                     <!-- Inner Core -->
                     <div class="relative h-[480px] bg-[#FAF7F2] rounded-[calc(2rem-0.5rem)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col justify-end">
-                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 awwwards-transition duration-1000">
+                        <img src="{{ asset($product->image_url) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 awwwards-transition duration-1000">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#1A1412]/90 via-[#1A1412]/30 to-transparent"></div>
                         
                         <div class="relative z-10 p-8 flex flex-col h-full justify-end">
@@ -134,7 +134,7 @@
                 <div class="relative h-full w-full bg-[#1A1412]/40 rounded-[calc(2rem-0.5rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] overflow-hidden flex flex-col {{ $index === 0 ? 'min-h-[500px]' : 'min-h-[250px]' }} p-8 md:p-10">
                     
                     <!-- Background Image for Bento Box -->
-                    <img src="{{ $category->products->first()?->image_url ?? asset('images/hero_seni_menyeduh.jpg') }}" alt="{{ $category->name }}" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 awwwards-transition duration-1000 z-0">
+                    <img src="{{ asset($category->products->first()?->image_url ?? 'images/hero_seni_menyeduh.jpg') }}" alt="{{ $category->name }}" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 awwwards-transition duration-1000 z-0">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1A1412] via-[#1A1412]/40 to-transparent z-0"></div>
 
                     <div class="flex justify-between items-start z-10 relative">
@@ -172,7 +172,7 @@
                     <i class="ph-fill ph-quotes text-6xl text-[#8D6E63]/10 absolute top-8 right-8"></i>
                     
                     <div class="flex items-center gap-1 mb-8 text-[#8D6E63]">
-                        @for($i=0; $i<$testi->rating; $i++)
+                        @for($i=0; $i < $testi->rating; $i++)
                             <i class="ph-fill ph-star text-sm"></i>
                         @endfor
                     </div>
